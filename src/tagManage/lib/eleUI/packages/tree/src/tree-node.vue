@@ -51,6 +51,7 @@
 </style>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
   import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
   import ElCheckbox from 'element-ui/packages/checkbox';
   import emitter from 'element-ui/src/mixins/emitter';
@@ -133,6 +134,7 @@
     },
 
     methods: {
+      ...mapMutations(['openFile', 'closeFile']),
       getNodeKey(node, index) {
         const nodeKey = this.tree.nodeKey;
         if (nodeKey && node) {
@@ -152,8 +154,8 @@
       handleClick() {
         if (this.node.isLeaf) {
           this.node.leafChecked = !this.node.leafChecked;
-          this.$forceUpdate();
-          this.tree.$emit('node-leaf-toggleClick', this.node.leafChecked, this.node.data); 
+          
+          // this.tree.$emit('node-leaf-toggleClick', this.node.leafChecked, this.node.data); 
           return
         };
         const store = this.tree.store;

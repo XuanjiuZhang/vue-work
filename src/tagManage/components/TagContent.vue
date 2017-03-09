@@ -3,16 +3,16 @@
     <div class="t-m-item" style="display: block;">
       <div class="nav-tabs-custom">
         <ul class="nav nav-tabs" style="border-bottom: none;">
-          <li><a href @click.prevent>用法说明</a></li>
-          <li><a href @click.prevent>案例说明</a></li>
+          <li :class="{active: currentTab === 'usage'}"><a href @click.prevent="showUsage">用法说明</a></li>
+          <li :class="{active: currentTab === 'instruction'}"><a href @click.prevent="showInstruction">案例说明</a></li>
         </ul> 
       </div>
       <!--用法说明-->
-      <div class="t-m-instruction">
+      <div class="t-m-instruction" v-show="currentTab === 'usage'">
         <Usage></Usage>
       </div>
       <!--案例说明-->
-      <div class="t-m-instruction">
+      <div class="t-m-instruction" v-show="currentTab === 'instruction'">
         <Case v-for="c in 5" :key="c"></Case>
       </div>
     </div>
@@ -53,6 +53,12 @@ import Usage from './contentSrc/Usage.vue';
     },
 
     methods: {
+      showUsage(){
+        this.currentTab = 'usage'
+      },
+      showInstruction(){
+        this.currentTab = 'instruction'
+      }
     },
 
     mounted(){
@@ -61,6 +67,7 @@ import Usage from './contentSrc/Usage.vue';
 
     data() {
       return {
+        currentTab: 'usage'
       };
     },
 

@@ -3,10 +3,10 @@
     <div class="tag-n-list">
       <div style="width: 5000px;">
         <transition-group tag="ul" name="slide-fade" class="nav nav-tabs animated-move">
-          <li v-for="nav in 5" :key="nav" :class="{active: nav === 1}">
-            <a href @click.prevent>
+          <li v-for="(file, index) in opendFiles" :key="file.id" :class="{active: currentFileIndex === index}">
+            <a href @click.prevent="openNav(index)">
               <span class="tag-name">name</span>
-              <i class="close-icon">╳</i>
+              <i class="close-icon" @click.prevent.stop="closeNav(index)">╳</i>
             </a>
           </li>
         </transition-group>
@@ -20,33 +20,42 @@
         </ul>-->
       </div>
     </div>
-    <div class="more-list dropdown" :class="{'open': openDropDown}" v-show="showDropDown">
+    
+    <div v-show="showDropDown" class="more-list dropdown" :class="{'open': openDropDown}">
       <!--此更多按钮需在排列不下时才出现-->
       <a class="drop-btn" href @click.prevent="toggleOpenDropDown">
         <i class="tag-icon tag-more-list"></i>
       </a>
-      <ul class="dropdown-menu dropdown-menu-right">
-        <li v-for="nav in 5" :key="nav">
-          <a href @click.prevent="goToNav">name</a>
-        </li>
-        <!--<li ng-repeat="nav in data.array track by nav.id">
-          <a href ng-click="goToNav($index)">name</a>
-        </li>-->
-      </ul>
+      <transition name="list">
+        <ul v-show="openDropDown" class="dropdown-menu dropdown-menu-right">
+          <li v-for="(file, index) in opendFiles" :key="file.id">
+            <a href @click.prevent="openNav(index)">name</a> 
+          </li>
+        </ul>
+      </transition>
     </div>
+    
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
   export default {
     watch: {
     },
 
     methods: {
+      ...mapMutations(['openNav', 'closeNav']),
       toggleOpenDropDown(){
         this.openDropDown = !this.openDropDown;
-      }
+      },
+      // leaveDropDown(){
+      //   this.openDropDown = false;
+      // }
+    },
+
+    computed: {
+      ...mapGetters(['opendFiles', 'currentFileIndex']) 
     },
 
     mounted(){
