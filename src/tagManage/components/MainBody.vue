@@ -27,6 +27,7 @@
         <Tag-nav></Tag-nav>
         <!--<tag-nav data="tagNavData"></tag-nav>-->
       </div>
+      <Tag-content></Tag-content>
       <!--<ui-view></ui-view>-->
     </div>
   </div>
@@ -55,6 +56,7 @@ Vue.use(eleInput);
 // Vue.component(Input.name, Input);
 import TagTree from './TagTree.vue';
 import TagNav from './TagNav.vue';
+import TagContent from './TagContent.vue';
 
 export default {
   data(){
@@ -71,7 +73,8 @@ export default {
   },
   components: {
     TagTree,
-    TagNav
+    TagNav,
+    TagContent
   }
 }
 </script>

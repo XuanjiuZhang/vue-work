@@ -3,6 +3,8 @@ import store from './vuex/createStore'
 import MainBody from './components/MainBody.vue'
 // import VueRouter from 'vue-router'
 // import router from './router'
+import './lib/codePrettify/prettify.less'
+import './lib/codePrettify/prettify'
 
 // Vue.use(VueRouter); 
 
