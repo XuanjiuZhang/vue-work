@@ -7,13 +7,15 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
   resolve: {
-   modules: [
-     path.join(__dirname, "src"),
-     "node_modules"
-   ],
-   extensions: ['.js', '.jsx', '.css', '.less', '.vue'],
+    modules: [
+      path.join(__dirname, "src"),
+      "node_modules"
+    ],
+    extensions: ['.js', '.jsx', '.css', '.less', '.vue'],
     alias: {
-      'vue$': 'vue/dist/vue.js'
+      'vue$': 'vue/dist/vue.js',
+      'eleUI': path.resolve(__dirname, 'src/tagManage/lib/eleUI/packages'),
+      'eleUIStyle': path.resolve(__dirname, 'src/tagManage/lib/eleUI/theme-default')
     }
   }, 
   context: __dirname + "/src",

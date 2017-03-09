@@ -10,5 +10,5 @@ new Vue({
   // router,
   store, // 注入到所有子组件1
   el: '#appRoot',
-  components: { mainbody: MainBody } 
+  components: { MainBody } 
 });
