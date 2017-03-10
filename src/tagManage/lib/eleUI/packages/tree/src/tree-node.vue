@@ -8,7 +8,7 @@
       'is-hidden': !node.visible
     }">
     <div class="el-tree-node__content"
-      :class="{'node-select': this.node.leafChecked}"
+      :class="{'node-select': this.leafChecked}"
       :style="{ 'padding-left': (node.level - 1) * tree.indent + 'px' }">
       <span
         class="el-tree-node__expand-icon"
@@ -133,6 +133,15 @@ import { mapGetters, mapMutations } from 'vuex';
       }
     },
 
+    computed: {
+      ...mapGetters(['opendFiles']),
+      leafChecked() {
+        return this.opendFiles.some(file => {
+          return file.id === this.node.data.id;
+        });
+      }
+    },
+
     methods: {
       ...mapMutations(['openFile', 'closeFile']),
       getNodeKey(node, index) {
@@ -153,10 +162,7 @@ import { mapGetters, mapMutations } from 'vuex';
 
       handleClick() {
         if (this.node.isLeaf) {
-          this.node.leafChecked = !this.node.leafChecked;
-          
-          // this.tree.$emit('node-leaf-toggleClick', this.node.leafChecked, this.node.data); 
-          return
+          this.leafChecked ? this.closeFile(this.node.data) : this.openFile(this.node.data)
         };
         const store = this.tree.store;
         store.setCurrentNode(this.node);

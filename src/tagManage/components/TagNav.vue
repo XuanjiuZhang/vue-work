@@ -1,23 +1,18 @@
 <template>
   <div class="tag-nav">
-    <div class="tag-n-list">
+    <div class="tag-n-list" ref="taglist">
       <div style="width: 5000px;">
-        <transition-group tag="ul" name="slide-fade" class="nav nav-tabs animated-move">
+        <transition-group tag="ul" name="slide-fade"
+         class="nav nav-tabs animated-move"
+          ref="navUl"
+          :style="{transform: `translateX(${-navDeltaX}px)`}">
           <li v-for="(file, index) in opendFiles" :key="file.id" :class="{active: currentFileIndex === index}">
-            <a href @click.prevent="openNav(index)">
-              <span class="tag-name">name</span>
-              <i class="close-icon" @click.prevent.stop="closeNav(index)">╳</i>
+            <a href @click.prevent="showFileContent(index)">
+              <span class="tag-name">{{ file.label }}</span>
+              <i class="close-icon" @click.prevent.stop="closeFile(file)">╳</i>
             </a>
           </li>
         </transition-group>
-        <!--<ul class="nav nav-tabs animated-move" ng-style="ulStyle">
-          <li ng-repeat="nav in data.array track by nav.id" ng-class="{active: $index === data.currentIndex}">
-            <a href ng-click="goToNav($index)">
-              <span class="tag-name">name</span>
-              <i class="close-icon" ng-click="closeNav($index)">╳</i>
-            </a>
-          </li>
-        </ul>-->
       </div>
     </div>
     
@@ -29,7 +24,7 @@
       <transition name="list">
         <ul v-show="openDropDown" class="dropdown-menu dropdown-menu-right">
           <li v-for="(file, index) in opendFiles" :key="file.id">
-            <a href @click.prevent="openNav(index)">name</a> 
+            <a href @click.prevent="showFileContent(index)">{{ file.label }}</a> 
           </li>
         </ul>
       </transition>
@@ -39,23 +34,53 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapGetters, mapMutations } from 'vuex';
   export default {
     watch: {
+      currentFileIndex(currentFileIndex){
+        Vue.nextTick(() => {
+          if(currentFileIndex === 0){
+            this.navDeltaX = 0;
+            return;
+          }
+          const taglistWidth = this.$refs.taglist.offsetWidth;
+          const liArr = Array.from(this.$refs.navUl.$el.childNodes);
+          const currentLiWidth = liArr[currentFileIndex].offsetWidth;
+          var preWidth = 0;
+          const liWidth = liArr.reduce((item1, item2, index) => {
+            if(currentFileIndex === index){
+              preWidth = item1;
+            }
+            return item1 + item2.offsetWidth;
+          }, 0);
+
+          if(preWidth + currentLiWidth + this.toggleDropDownWidth - this.navDeltaX > taglistWidth || preWidth < this.navDeltaX){
+            let minMove = 0;
+            liArr.some((li) => {
+              minMove += li.offsetWidth;
+              return preWidth + currentLiWidth + this.toggleDropDownWidth - minMove <= taglistWidth;
+            });
+            this.navDeltaX = minMove;
+          }
+          
+        });
+      } 
     },
 
     methods: {
-      ...mapMutations(['openNav', 'closeNav']),
+      ...mapMutations(['showFileContent', 'closeFile']),
       toggleOpenDropDown(){
         this.openDropDown = !this.openDropDown;
       },
-      // leaveDropDown(){
-      //   this.openDropDown = false;
-      // }
     },
 
     computed: {
-      ...mapGetters(['opendFiles', 'currentFileIndex']) 
+      ...mapGetters(['opendFiles', 'currentFileIndex']),
+      childNodes(){
+        console.log(_.values(this.$refs));
+        return this.currentFileIndex;
+      }
     },
 
     mounted(){
@@ -65,7 +90,9 @@ import { mapGetters, mapMutations } from 'vuex';
     data() {
       return {
         showDropDown: true,
-        openDropDown: false
+        openDropDown: false,
+        navDeltaX: 0,
+        toggleDropDownWidth: 46
       };
     }
   };

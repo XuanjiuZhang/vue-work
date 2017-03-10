@@ -47,7 +47,6 @@ export default class Node {
     this.id = nodeIdSeed++;
     this.text = null;
     this.checked = false;
-    this.leafChecked = false;
     this.indeterminate = false;
     this.data = null;
     this.expanded = false;

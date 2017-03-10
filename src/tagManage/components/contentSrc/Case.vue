@@ -1,7 +1,8 @@
 <template>
   <div class="instr-section">
     <h4 class="t-exam-title">
-      <button class="btn btn-link btn-link-arrow pull-right" @click="toggleShow">
+      下面的例子显示"新闻"栏目下的内容图片，共显示3幅。
+      <button class="btn btn-link pull-right" @click="toggleShow">
         <!--<span v-show="show">收起</span>
         <span v-show="!show">展开</span>-->
         <i class="fa fa-lg"
@@ -34,11 +35,11 @@
   </div>
 </template>
 
-<style lang="less" scoped>
+<!--<style lang="less" scoped>
   .btn-link-arrow{
     margin-top: -15px;
   }
-</style>
+</style>-->
 
 <script>
 import { mapGetters } from 'vuex';

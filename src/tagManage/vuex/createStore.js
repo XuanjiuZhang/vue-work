@@ -38,6 +38,30 @@ const store = new Vuex.Store({
         }, {
           id: 8,
           label: '二级 3-2'
+        },{
+          id: 19,
+          label: '二级 3-3'
+        }, {
+          id: 11,
+          label: '二级 3-4'
+        },{
+          id: 12,
+          label: '二级 3-5'
+        }, {
+          id: 13,
+          label: '二级 3-6'
+        },{
+          id: 14,
+          label: '二级 3-7 二级 3-7'
+        }, {
+          id: 15,
+          label: '二级 3-8 二级 3-8'
+        },{
+          id: 16,
+          label: '二级 3-9 二级 3-9 二级 3-9'
+        }, {
+          id: 17,
+          label: '二级 3-10 二级 3-10 二级 3-10 二级 3-10'
         }]
       }],
       defaultProps: {
@@ -49,14 +73,8 @@ const store = new Vuex.Store({
     currentFileIndex: 2
   },
   mutations: {
-    openNav (state, index) {
+    showFileContent (state, index) {
       state.currentFileIndex = index;
-    },
-    closeNav (state, index) {
-      if(state.opendFiles.length - 1 === state.currentFileIndex){
-        state.currentFileIndex--;
-      }
-      state.opendFiles.splice(index, 1);
     },
     openFile (state, file) {
       state.opendFiles.push(file);
