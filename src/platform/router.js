@@ -7,8 +7,10 @@ const about = { template: '<div>this is about page</div>' };
 const UserProfile = { template: '<div>this is UserProfile</div>' };
 const UserPosts = { template: '<div>this is UserPosts</div>' };
 
+import StyleManager from './components/styleManage/StyleManager.vue';
+
 const routes = [
-  { path: '/styleManage', component: home, name: '风格管理' },
+  { path: '/styleManage', component: StyleManager, name: '风格管理' },
   {
     path: '/caseManage', component: news, name: '案例管理', children: [
       {

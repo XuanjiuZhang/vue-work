@@ -11,11 +11,11 @@
     <!-- Main content -->
     <div class="content body" :style="bodyMinHeight">
       <!--<ui-view></ui-view>-->
-      <p>
+      <!--<p>
         <router-link to="/styleManage">Go to home</router-link>
         <router-link to="/caseManage">Go to news</router-link>
         <router-link to="/order">Go to about</router-link>
-      </p>
+      </p>-->
       <router-view></router-view>
     </div>
     <!-- / content -->
