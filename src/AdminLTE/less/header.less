@@ -1,0 +1,303 @@
+/*
+ * Component: Main Header
+ * ----------------------
+ */
+
+.main-header {
+  position: relative;
+  height: @custom-head-height;
+  max-height: 100px;
+  z-index: 1030;
+  transition: left .3s ease-in-out;
+  .sidebar-collapse & {
+    @media (min-width: @screen-sm) {
+      left: 0;
+    }
+  }
+  .user-menu {
+    height: 100%;
+  }
+  .hidden-xs i {
+    margin-left: 5px;
+  }
+  //Navbar
+  .navbar {
+    .transition(margin-left @transition-speed @transition-fn);
+    margin-bottom: 0;
+    border: none;
+    min-height: @navbar-height;
+    border-radius: 0;
+    .layout-top-nav & {
+      margin-left: 0;
+    }
+  }
+  .dropdown-toggle{
+    cursor: pointer;
+    i {
+      color: #a8b6c4;
+    }
+  }
+  //Navbar search text input
+  #navbar-search-input.form-control {
+    background: rgba(255, 255, 255, .2);
+    border-color: transparent;
+    &:focus,
+    &:active {
+      border-color: rgba(0, 0, 0, .1);
+      background: rgba(255, 255, 255, .9);
+    }
+    &::-moz-placeholder {
+      color: #ccc;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: #ccc;
+    }
+    &::-webkit-input-placeholder {
+      color: #ccc;
+    }
+  }
+  //Navbar Right Menu
+  .navbar-custom-menu,
+  .navbar-right {
+    float: right;
+    @media (max-width: @screen-sm-max) {
+      a {
+        color: inherit;
+        background: transparent;
+      }
+    }
+  }
+  .navbar-right {
+    @media (max-width: @screen-header-collapse) {
+      float: none;
+      .navbar-collapse & {
+        margin: 7.5px -15px;
+      }
+
+      > li {
+        color: inherit;
+        border: 0;
+      }
+    }
+  }
+  //Navbar toggle button
+  .sidebar-toggle {
+    float: left;
+    background-color: transparent;
+    background-image: none;
+    padding: @navbar-padding-vertical (@navbar-padding-horizontal + 9px);
+    //Add the fontawesome bars icon
+    font-family: fontAwesome;
+    cursor: pointer;
+    &:before {
+      content: "\f0c9";
+    }
+    &:hover {
+      color: #fff;
+    }
+    &:focus,
+    &:active {
+      background: transparent;
+    }
+  }
+  .sidebar-toggle .icon-bar {
+    display: none;
+  }
+  //Navbar User Menu
+  .navbar .nav > li.user > a {
+    > .fa,
+    > .glyphicon,
+    > .ion {
+      margin-right: 5px;
+    }
+  }
+  .navbar .nav > li.notifications-menu {
+    height: 100%;
+    > a {
+      max-height: @custom-head-height;
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+  }
+  .navbar-nav > .notifications-menu {
+    > .dropdown-toggle > .fa{
+      font-size: 22px;
+    }
+  }
+  //Labels in navbar
+  .navbar .nav > li > a > .label {
+    position: absolute;
+    top: 13px;
+    right: 8px;
+    min-width: 16px;
+    height: 16px;
+    text-align: center;
+    font-size: 9px;
+    padding: 3px;
+    border-radius: 8px;
+    line-height: .9;
+  }
+
+  //Logo bar
+  .logo {
+    .transition(width @transition-speed @transition-fn);
+    display: block;
+    float: left;
+    height: @navbar-height;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: @sidebar-width;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+    //Add support to sidebar mini by allowing the user to create
+    //2 logo designs. mini and lg
+    .logo-lg {
+      //should be visibile when sidebar isn't collapsed
+      display: block;
+      margin-top: 5px;
+    }
+    .logo-mini {
+      display: none;
+    }
+  }
+  //Navbar Brand. Alternative logo with layout-top-nav
+  .navbar-brand {
+    color: #fff;
+  }
+}
+
+.navbar-tabs {
+  float: left;
+  height: @custom-head-height;
+  line-height: @custom-head-height;
+  margin-right: 80px;
+  a {
+    display: inline-block;
+    height: 100%;
+    margin: 0 20px;
+    font-size: 16px;
+    cursor: pointer;
+    &.active {
+      color: @header-tabs-sel;
+      border-bottom: 3px solid @header-tabs-sel;
+    }
+  }
+}
+
+// Content Header
+.content-crumb {
+  height: 51px;
+  line-height: 50px;
+  background: #fff;
+  border-bottom: 1px solid @default-border;
+
+  .sidebar-collapse & {
+    @media (min-width: @screen-sm) {
+      left: 0;
+    }
+  }
+
+  > .breadcrumb {
+    padding: 0 25px;
+    margin: 0;
+    background: transparent;
+    font-size: 16px;
+    .border-radius(2px);
+    > .active,
+    > .active > a{
+      color: #3ca4ff;
+    }
+    > li > a {
+      color: #8695a8;
+      text-decoration: none;
+      display: inline-block;
+      > .fa, > .glyphicon, > .ion {
+        margin-right: 5px;
+      }
+    }
+    > li + li:before {
+      content: '>\00a0';
+    }
+  }
+
+  @media (max-width: @screen-sm-max) {
+    > .breadcrumb {
+      background: transparent;
+      li:before {
+        color: darken(@gray, 20%);
+      }
+    }
+  }
+}
+
+.navbar-toggle {
+  color: #fff;
+  border: 0;
+  margin: 0;
+  padding: @navbar-padding-vertical @navbar-padding-horizontal;
+}
+
+//Control navbar scaffolding on x-small screens
+@media (max-width: @screen-sm-max) {
+  .navbar-custom-menu .navbar-nav > li {
+    float: left;
+  }
+
+  //Dont't let links get full width
+  .navbar-custom-menu .navbar-nav {
+    margin: 0;
+    float: left;
+  }
+
+  .navbar-custom-menu .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: @navbar-height - (15px * 2);
+  }
+}
+
+// Collapse header
+@media (max-width: @screen-header-collapse) {
+  .main-header {
+    position: relative;
+    .logo,
+    .navbar {
+      width: 100%;
+      float: none;
+    }
+    .navbar {
+      margin: 0;
+    }
+    .navbar-custom-menu {
+      float: right;
+    }
+  }
+}
+
+.navbar-collapse.pull-left {
+  @media (max-width: @screen-sm-max) {
+    float: none !important;
+    + .navbar-custom-menu {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 40px;
+    }
+  }
+}
+
+.navbar-welcome{
+  line-height: 60px;
+  color: #a8b6c3;
+  margin-left: 36px;
+  a{
+    text-decoration: underline;
+  }
+  @media (max-width: @screen-sm-max) {
+   display: none;
+  }
+}

@@ -1,0 +1,162 @@
+.s-cover {
+  display: inline-block;
+  width: 82px;
+  height: 82px;
+  line-height: 1;
+  text-align: center;
+  border: 1px solid #cbd3de;
+  border-radius: 4px;
+}
+.s-cover img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/*service.website.styleList--start*/
+.style-item .option-one {
+  padding: 5px 15px 0;
+}
+.style-m-list li {
+  min-width: 320px;
+  float: left;
+  margin-top: 30px;
+}
+.style-m-item {
+  width: 282px;
+  margin: 0 auto;
+  border: 1px solid #f2f3f5;
+  box-shadow: 0 0 3px 1px rgba(203, 211, 222, 0.1);
+}
+.sm-i-body {
+  position: relative;
+}
+.sm-i-body .sm-i-img {
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.sm-i-body .sm-i-img img {
+  min-width: 100%;
+  min-height: 100%;
+}
+.sm-i-body .sm-i-txt {
+  padding: 10px 15px 0;
+}
+.sm-i-body .sm-i-status {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  padding: 3px 10px 3px 6px;
+  border-radius: 0 20px 20px 0;
+}
+.sm-i-operate {
+  border-top: 1px solid #f2f3f5;
+  padding: 10px;
+  height: 51px;
+}
+.four-btn .sm-i-operate .btn {
+  width: 23.5%;
+}
+.three-btn .sm-i-operate .btn {
+  width: 31.8%;
+}
+.two-btn .sm-i-operate .btn {
+  width: 49%;
+}
+.one-btn .sm-i-operate .btn {
+  width: 100%;
+}
+/*service.website.styleList--end*/
+/*service.website.detail start--*/
+.button-grp {
+  width: 260px;
+  margin: 0 auto;
+  text-align: center;
+}
+.button-grp .btn {
+  width: 120px;
+  text-align: center;
+}
+.button-grp .btn + .btn {
+  margin-left: 15px;
+}
+.detail-box {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.order-grp {
+  padding: 20px;
+  margin-bottom: 25px;
+  background-color: #f8f8f8;
+  border: 1px solid #cbd3de;
+  border-radius: 4px;
+}
+.order-grp .thumb-ico .thumbnail {
+  margin: 0 10px 10px 0;
+}
+/*service.website.detail end--*/
+/*service.website.addStyle--end*/
+.button-grp {
+  width: 260px;
+  margin: 0 auto;
+  text-align: center;
+}
+.button-grp .btn {
+  width: 120px;
+  text-align: center;
+}
+.button-grp .btn + .btn {
+  margin-left: 15px;
+}
+.add-style.box-body {
+  padding: 45px;
+}
+.add-style .gray-box {
+  padding: 30px;
+  text-align: center;
+  background-color: #f3f4f6;
+}
+.add-style .c-statusbar {
+  display: inline-block;
+}
+.ss-item {
+  margin: 50px 0;
+}
+.sel-device {
+  text-align: center;
+}
+.sel-device ul {
+  display: inline-block;
+}
+.sel-device li {
+  float: left;
+}
+.sel-device li + li {
+  margin-left: 50px;
+}
+.sel-device li.active .device-item {
+  border-color: #93a1b2;
+}
+.device-item {
+  width: 222px;
+  height: 176px;
+  margin-bottom: 15px;
+  line-height: 174px;
+  vertical-align: middle;
+  background-color: #f5f6f8;
+  border: 1px solid #dbe0e5;
+  border-radius: 10px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.dev-pc .device-item {
+  background-image: url("../../img/device-icon-pc.png");
+}
+.dev-tel .device-item {
+  background-image: url("../../img/device-icon-tel.png");
+}
+/*service.website.addStyle--end*/
+.c-modal .check-modal.modal-body {
+  min-height: 100px;
+}

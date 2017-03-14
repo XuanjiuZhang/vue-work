@@ -1,0 +1,177 @@
+//AdminLTE 2 Variables.less
+//=========================
+// 自定义变量
+//--------------------------------------------------------
+//图片路径
+//@images: "../img";
+@images: "../img";
+//Body background (Affects main content background only)
+@body-bg: #f2f3f5; //body背景色
+
+@custom-head-bg: #ecf1f5; // 顶部背景颜色
+@custom-head-height: 60px; // 顶部高度
+@custom-head-color: #4b637f; // 顶部高度
+@header-tabs-sel: #3ca4ff;
+
+@sidebar-width: 180px; // 左侧菜单宽度
+@sidebar-bg: #334152; // 左侧菜单，背景颜色
+@sidebar-hover: #fff; // 左侧菜单，hover 颜色
+@sidebar-lev1-sel-bg: #3ca4ff; // 左侧一级菜单，选中颜色
+@sidebar-lev2-sel: #3ca4ff; // 左侧二级菜单，选中颜色
+@custom-sidebar-text: #a8b6c4; // 左侧菜单，文字颜色
+
+@body-color: #334152; //主体文字颜色
+@text-muted-color: #cbd3de; //辅助文字颜色
+@text-muted-color: #cbd3de; //辅助文字颜色
+@param-color: #8695a8; //段落文字颜色
+@label-color: #4b637f; //标签文字颜色
+@table-color: @label-color; //表格文字颜色
+@anchor-color: @label-color; //a标签颜色
+//PATHS
+//--------------------------------------------------------
+@boxed-layout-bg-image-path: "@{images}/boxed-bg.jpg";
+//COLORS
+//--------------------------------------------------------
+//default
+@default: #ccc;
+//Primary
+@light-blue: #0c8eff;
+//Danger
+@red: #ff5d48;
+//Success
+@green: #08a13f;
+//Info
+@aqua: #3db9dc;
+//Warning
+@yellow: #f7ae00;
+@blue: #0073b7;
+@navy: #001F3F;
+@teal: #39CCCC;
+@olive: #3D9970;
+@lime: #01FF70;
+@orange: #FF851B;
+@fuchsia: #F012BE;
+@purple: #605ca8;
+@maroon: #D81B60;
+@black: #111;
+@gray: #d2d6de;
+@link: #64b0f2;
+
+@default-border: #cbd3de;
+
+//BUTTON
+//--------------------------------------------------------
+@btn-default-color:              #4b637f;
+@btn-default-bg:                 transparent;
+@btn-default-border:             #cbd3de;
+@screen-xs-max: 600;
+
+//LAYOUT
+//--------------------------------------------------------
+//Side bar and logo width
+@sidebar-width: 180px;
+//Boxed layout maximum width
+@boxed-layout-max-width: 1024px;
+//When the logo should go to the top of the screen
+@screen-header-collapse: @screen-xs-max;
+//Link colors (Aka: <a> tags)
+@link-color: @light-blue;
+@link-hover-color: lighten(@link-color, 15%);
+//SIDEBAR SKINS
+//--------------------------------------------------------
+
+//pagination
+//--------------------------------------------------------
+@pagination-color: #2b3d51; //默认颜色
+@pagination-hover-bg: #e4e7ea;  //鼠标经过默认背景
+@pagination-active-color: @light-blue;  //鼠标选中背景颜色
+
+//Dark sidebar
+@sidebar-dark-bg: #222d32;
+@sidebar-dark-hover-bg: darken(@sidebar-dark-bg, 2%);
+@sidebar-dark-color: lighten(@sidebar-dark-bg, 60%);
+@sidebar-dark-hover-color: #fff;
+@sidebar-dark-submenu-bg: lighten(@sidebar-dark-bg, 5%);
+@sidebar-dark-submenu-color: lighten(@sidebar-dark-submenu-bg, 40%);
+@sidebar-dark-submenu-hover-color: #fff;
+
+//Light sidebar
+@sidebar-light-bg: #f9fafc;
+@sidebar-light-hover-bg: lighten(#f0f0f1, 1.5%);
+@sidebar-light-color: #444;
+@sidebar-light-hover-color: #000;
+@sidebar-light-submenu-bg: @sidebar-light-hover-bg;
+@sidebar-light-submenu-color: #777;
+@sidebar-light-submenu-hover-color: #000;
+
+//CONTROL SIDEBAR
+//--------------------------------------------------------
+@control-sidebar-width: @sidebar-width;
+
+//BOXES
+//--------------------------------------------------------
+@box-border-color: #f4f4f4;
+@box-border-radius: 3px;
+@box-footer-bg: #fff;
+@box-boxshadow: 0 0 8px #cbd3de;
+@box-padding: 15px;
+@box-lg-padding: 25px;
+
+//Box variants
+@box-default-border-top-color: #d2d6de;
+
+//BUTTONS
+//--------------------------------------------------------
+@btn-boxshadow: none;
+@cursor-disabled: not-allowed;  //按钮不可用状态
+
+//tooltip
+@tooltip-color: #2e3b4b;
+
+//PROGRESS BARS
+//--------------------------------------------------------
+@progress-color: #1bb99a;
+@progress-bg: #ecf1f5;
+@progress-size: 10px;
+@progress-bar-border-radius: 1px;
+@progress-bar-sm-border-radius: 1px;
+@progress-bar-xs-border-radius: 1px;
+
+//STATUS BARS
+//--------------------------------------------------------
+@status-default: #8695a8;
+@status-complate: #3ca4ff;
+
+//FORMS
+//--------------------------------------------------------
+@form-placeholder: #8695a8; //占位符颜色
+@input-radius: 4px;
+@input-color: #4b637f;
+@input-border-focus: @light-blue; //输入框获得焦点
+
+//Border radius for non flat buttons
+@btn-border-radius: 3px;
+
+//TABLE
+//--------------------------------------------------------
+@thead-bg: #617081; //表头背景
+@table-border-color: #cbd3de;
+
+//DIRECT CHAT
+//--------------------------------------------------------
+@direct-chat-height: 250px;
+@direct-chat-default-msg-bg: @gray;
+@direct-chat-default-font-color: #444;
+@direct-chat-default-msg-border-color: @gray;
+
+//CHAT WIDGET
+//--------------------------------------------------------
+@attachment-border-radius: 3px;
+
+//TRANSITIONS SETTINGS
+//--------------------------------------------------------
+
+//Transition global options
+@transition-speed: .3s;
+@transition-fn: ease-in-out;
+//cubic-bezier(0.32,1.25,0.375,1.15);

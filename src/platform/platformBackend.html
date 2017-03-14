@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>平台管理后台</title>
+  <link rel="stylesheet" href="./style/vendor.min.css">
+  <script src="../assets/platform.js"></script>
+  <!--[if lt IE 9]>
+  <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="skin-blue fixed" ng-app="app.platformBackend"
+      ng-controller="platformBackendController" ng-class="{ 'sidebar-collapse': sidebar }">
+<!--[if lt IE 8]>
+<p class="browsehappy">
+  你正在使用一个<strong>过时</strong>的浏览器。请<a class="link" href="http://browsehappy.com">升级你的浏览器</a>以查看此页面。
+</p>
+<![endif]-->
+<div id="wrapper" style="width: 100%; height: 100%">
+  <platform-wrapper></platform-wrapper>
+</div>
+
+</body>
+</html>

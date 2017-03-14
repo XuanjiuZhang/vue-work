@@ -1,0 +1,133 @@
+
+.table.i-table {
+  border: 1px solid @table-border-color;
+  margin-bottom: 0;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border-top: 1px solid @table-border-color;
+        label {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  > thead tr {
+    > th,
+    > td {
+      background-color: @thead-bg;
+      color: #fff;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      font-weight: normal;
+      border-bottom: 1px solid @table-border-color;
+      white-space: nowrap;
+
+      .icheckbox,
+      .iradio {
+        border-color: #617081;
+        background-color: #fff;
+      }
+
+      .icheckbox.checked {
+        &.icheckbox-custom {
+          .icheck-flat-style(@link, @link);
+        }
+
+        &.icheckbox-primary {
+          .icheck-flat-style(@light-blue, @light-blue);
+        }
+
+        &.icheckbox-success {
+          .icheck-flat-style(@green, @green);
+        }
+
+        &.icheckbox-info {
+          .icheck-flat-style(@aqua, @aqua);
+        }
+
+        &.icheckbox-warning {
+          .icheck-flat-style(@yellow, @yellow);
+        }
+
+        &.icheckbox-danger {
+          .icheck-flat-style(@red, @red);
+        }
+      }
+    }
+
+    .resize-table {
+      background-color: @thead-bg;
+      border-left: 3px solid @thead-bg;
+      border-right: 3px solid @thead-bg;
+    }
+  }
+
+  > tbody tr td {
+    &:last-child {
+      .dropdown-menu {
+        right: 0;
+        left: auto;
+        text-align: right;
+      }
+    }
+    p {
+      margin-bottom: 0;
+      white-space: normal;
+    }
+  }
+
+  &.dataTable thead {
+    .sorting:after,
+    .sorting_asc:after,
+    .sorting_desc:after {
+      top: 12px;
+    }
+  }
+
+  &.table-bordered {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          border-color: #cbd3de;
+        }
+      }
+    }
+  }
+
+}
+
+.has-sort {
+  float: left;
+}
+.sort-group {
+  float: left;
+  margin: 2px 0 0 10px;
+  .sort-asc,
+  .sort-desc {
+    display: block;
+    width: 14px;
+    height: 8px;
+    cursor: pointer;
+    background-image: url("@{images}/c-icon.png");
+    background-repeat: no-repeat;
+    &:hover,
+    &:active {
+      .opacity(.5);
+    }
+  }
+  .sort-asc {
+    background-position: -20px -1px;
+    border-radius: 2px 2px 0 0;
+  }
+  .sort-desc {
+    background-position: -20px -9px;
+    border-radius: 0 0 2px 2px;
+  }
+}

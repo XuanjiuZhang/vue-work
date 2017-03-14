@@ -1,0 +1,191 @@
+/* =============
+   Tree view page
+============= */
+.i-tree-level{
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  > .i-tree-node {
+    position: relative;
+    margin: 0;
+    padding-left: 15px;
+    > .i-tree-level{
+      display: none;
+    }
+    > .ver-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 100%;
+      background-image: url("@{images}/32px.png");
+      background-repeat: repeat-y;
+      background-position: -292px -2px;
+    }
+    &:last-child {
+      > .ver-line {
+        display: none;
+      }
+    }
+  }
+
+  .node-wrapper{
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    .border-radius(4px);
+    .icon-on-off{
+      position: absolute;
+      left: -24px;
+    }
+    &:hover {
+      background-color: #ecf0f5;
+      .i-t-operate {
+        display: block;
+      }
+    }
+    &.node-select{
+      background-color: #ecf0f5;
+    }
+  }
+
+  .node-link {
+    display: block;
+    height: 100%;
+    line-height: 30px;
+    color: rgb(51, 51, 51);
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    .fa {
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      color: rgba(43, 61, 81, .5);
+    }
+  }
+
+  .i-tress-icon {
+    cursor: pointer;
+    background-image: url("@{images}/32px.png");
+    background-repeat: no-repeat;
+  }
+  .open-node > .node-wrapper > .icon-on-off{
+    background-position: -36px -2px;
+  }
+  .open-node > .i-tree-level{
+    display: block !important;
+  }
+  .icon-on-off{
+    background-position: -4px -2px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &.has-border {
+    .ico-default {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: -24px;
+      background-position: -68px -2px;
+      &.icon-on-off {
+        background-position: -100px -2px;
+      }
+    }
+
+    .open-node > .node-wrapper > .icon-on-off{
+      background-position: -132px -2px;
+    }
+  }
+}
+
+.i-t-operate {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0 3px;
+  font-size: 16px;
+  background-color: #ecf0f5;
+  .border-radius(0 4px 4px 0);
+  a {
+    display: inline-block;
+  }
+}
+
+.i-t-edit {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 9;
+  .form-control,
+  .btn {
+    height: 30px;
+  }
+}
+
+.table-tree {
+  .i-tree-level {
+    .node-link {
+      display: block;
+      float: left;
+      width: 200px;
+      line-height: 34px;
+    }
+    .node-wrapper {
+      height: 51px;
+      padding: 8px 0;
+      line-height: 34px;
+      padding-left: 85px;
+      border-bottom: 1px solid @default-border;
+      border-left: 1px solid @default-border;
+      border-right: 1px solid @default-border;
+
+      .icon-on-off {
+        top: 10px;
+        left: 55px;
+      }
+
+      .i-t-check {
+        position: absolute;
+        top: 17px;
+        left: 20px;
+        line-height: 1;
+      }
+    }
+    > .i-tree-node {
+      padding-left: 0;
+    }
+
+    .i-tree-level {
+      .node-link {
+        width: 175px;
+      }
+      .node-wrapper {
+        padding-left: 110px;
+      }
+      .icon-on-off {
+        left: 80px;
+      }
+
+      .i-tree-level {
+        .node-link {
+          width: 150px;
+        }
+        .node-wrapper {
+          padding-left: 135px;
+        }
+        .icon-on-off {
+          left: 105px;
+        }
+
+      }
+
+    }
+  }
+}

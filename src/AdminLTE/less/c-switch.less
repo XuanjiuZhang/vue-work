@@ -1,0 +1,49 @@
+.c-switch {
+  display: inline-block;
+  width: 52px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 12px;
+  vertical-align: middle;
+  .switch-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 0 4px;
+    text-align: right;
+    color: #8695a8;
+    background-color: #cbd3de;
+    transition: background-color .2s;
+    .s-circle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 26px;
+      height: 26px;
+      border: 1px solid #cbd3de;
+      border-radius: 15px;
+      background-color: #fff;
+      transition: left .2s;
+    }
+  }
+
+  &.on {
+    .switch-box {
+      text-align: left;
+      .s-circle {
+        left: 26px;
+      }
+    }
+  }
+
+  &.switch-primary.on {
+    .switch-box {
+      color: #006dcb;
+      background-color: @light-blue;
+      .s-circle {
+        border-color: @light-blue;
+      }
+    }
+  }
+}

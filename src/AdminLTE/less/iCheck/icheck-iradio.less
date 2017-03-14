@@ -1,0 +1,135 @@
+.checkbox-nav {
+  .nowrap;
+}
+.icheckbox, .iradio {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid rgba(43, 61, 81, 0.5);
+  background-color: transparent;
+  &:disabled,
+  &.disabled {
+    opacity: .6;
+    cursor: not-allowed;
+  }
+}
+
+.icheckbox-square,
+.iradio-square {
+  border-radius: 4px;
+}
+
+.icheckbox-circle,
+.iradio-circle {
+  border-radius: 50%;
+}
+
+.icheckbox {
+  > .iCheck-ico {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.iradio {
+  > .iCheck-ico {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-radius: 50%;
+  }
+}
+
+.icheck-txt,
+.iradio-txt {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+//.icheck-flat-style(@bg-color, @border-color) {
+//  background-color: @bg-color;
+//  border-color: @border-color;
+//}
+//
+//.iradio-flat-style(@bg-color, @border-color) {
+//  border-color: @border-color;
+//  > .iCheck-ico {
+//    background-color: @bg-color;
+//  }
+//}
+
+.icheckbox {
+  &.checked {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4NkExNkM1QzZBNjcxMUU2ODk4MTg0RDkyRTkzODkxRSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4NkExNkM1RDZBNjcxMUU2ODk4MTg0RDkyRTkzODkxRSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjg2QTE2QzVBNkE2NzExRTY4OTgxODREOTJFOTM4OTFFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjg2QTE2QzVCNkE2NzExRTY4OTgxODREOTJFOTM4OTFFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+CSedtQAAAJRJREFUeNpi1LYNZMADmIF4ARAvZ8GjiBGIZwNxDBALMSEJooOJQJwIxCeBOBKkMBqItwMxG5KiViDOBeLLQOwJxJ9ACkGOdAfi1UDMCsQVQFwFxLeB2AWI34N0gtwYBcRbgNgPao0hED8EYicgfgWzAmTiLyAOAOIjUEXPoSY9QXYwzDPfgNgHiHdAnXEH3WcAAQYAnMEZZCn74t0AAAAASUVORK5CYII=") no-repeat center center;
+
+    &.icheckbox-default,
+    &.icheckbox-custom,
+    &.icheckbox-primary,
+    &.icheckbox-success,
+    &.icheckbox-info,
+    &.icheckbox-warning,
+    &.icheckbox-danger {
+      > .iCheck-ico {
+        background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2MzAzQzY3QjZBNjcxMUU2QkU4RkVDREY3QTFGRTc3RSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2MzAzQzY3QzZBNjcxMUU2QkU4RkVDREY3QTFGRTc3RSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjYzMDNDNjc5NkE2NzExRTZCRThGRUNERjdBMUZFNzdFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjYzMDNDNjdBNkE2NzExRTZCRThGRUNERjdBMUZFNzdFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Nnrx+wAAAHtJREFUeNpi/P//PwMewAzEC4B4OQNIIQ7MCMTz/kPAVmRBdIWToIpOADEfSCAaiHcAMRuSolaooktALAh2HpBYAxXcCMSsQFwB5d8CYjGYZgaoSbugkueg9AMglkF2CozBBcSHoYqeAbEKupuROfxAvB2IdbGFAkCAAQA25+rLq8DiugAAAABJRU5ErkJggg==") no-repeat center center;
+      }
+    }
+
+    &.icheckbox-custom {
+      .icheck-flat-style(@link, @link);
+    }
+
+    &.icheckbox-primary {
+      .icheck-flat-style(@light-blue, @light-blue);
+    }
+
+    &.icheckbox-success {
+      .icheck-flat-style(@green, @green);
+    }
+
+    &.icheckbox-info {
+      .icheck-flat-style(@aqua, @aqua);
+    }
+
+    &.icheckbox-warning {
+      .icheck-flat-style(@yellow, @yellow);
+    }
+
+    &.icheckbox-danger {
+      .icheck-flat-style(@red, @red);
+    }
+  }
+}
+
+.iradio {
+  &.checked {
+    &.iradio-custom {
+      .iradio-flat-style(@link, @link);
+    }
+    &.iradio-primary {
+      .iradio-flat-style(@light-blue, @light-blue);
+    }
+    &.iradio-success {
+      .iradio-flat-style(@green, @green);
+    }
+    &.iradio-info {
+      .iradio-flat-style(@aqua, @aqua);
+    }
+    &.iradio-warning {
+      .iradio-flat-style(@yellow, @yellow);
+    }
+    &.iradio-danger {
+      .iradio-flat-style(@red, @red);
+    }
+    &.iradio-default{
+      .iradio-flat-style(#999999, #999999);
+    }
+  }
+}

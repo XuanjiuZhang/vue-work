@@ -1,0 +1,45 @@
+/*enterprise.web.detail start--*/
+.button-grp {
+  width: 260px;
+  margin: 0 auto;
+  text-align: center;
+}
+.button-grp .btn {
+  width: 120px;
+  text-align: center;
+}
+.button-grp .btn + .btn {
+  margin-left: 15px;
+}
+.detail-box {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.order-grp {
+  padding: 20px;
+  margin-bottom: 25px;
+  background-color: #f8f8f8;
+  border: 1px solid #cbd3de;
+  border-radius: 4px;
+}
+.order-grp .thumb-ico .thumbnail {
+  margin: 0 10px 10px 0;
+}
+/*enterprise.web.detail end--*/
+/*enterprise.rights.new start--*/
+.assign-title {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  line-height: 1;
+  border-left: 3px solid #0c8eff;
+}
+/*enterprise.rights.new end--*/
+/*弹窗*/
+.c-modal {
+  /*日志详情—弹框 start*/
+  /*日志详情—弹框 end*/
+}
+.c-modal .log-info ul li {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}

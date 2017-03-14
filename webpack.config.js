@@ -14,14 +14,14 @@ module.exports = {
     extensions: ['.js', '.jsx', '.css', '.less', '.vue'],
     alias: {
       'vue$': 'vue/dist/vue.js',
-      'eleUI': path.resolve(__dirname, 'src/tagManage/lib/eleUI/packages'),
-      'eleUIStyle': path.resolve(__dirname, 'src/tagManage/lib/eleUI/theme-default')
+      'eleUI': path.resolve(__dirname, 'src/eleUI/packages'),
+      'eleUIStyle': path.resolve(__dirname, 'src/eleUI/theme-default')
     }
   }, 
   context: __dirname + "/src",
   entry: {
     tagManage: ['whatwg-fetch', './tagManage/index.js'],
-    // vendor: ['whatwg-fetch', './lib/hammer.min.js']
+    platform: ['whatwg-fetch', './platform/index.js']
   },
   output: {
     path: path.join(__dirname, 'assets'),

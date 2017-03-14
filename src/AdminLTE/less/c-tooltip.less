@@ -1,0 +1,93 @@
+.c-tooltip {
+  position: relative;
+  &:hover {
+    .tooltip {
+      .opacity(1);
+    }
+  }
+}
+.tooltip {
+  &.top,
+  &.top-left,
+  &.top-right {
+    margin-top: -3px;
+    left: 0;
+    bottom: 100%;
+    &.jus-mid {
+      bottom: 50%;
+      left: 50%;
+    }
+    .tooltip-arrow {
+      border-top-color: @tooltip-color;
+    }
+    &.blue-tip .tooltip-arrow {
+      border-top-color: @blue;
+    }
+  }
+  &.bottom,
+  &.bottom-left,
+  &.bottom-right {
+    //padding: @tooltip-arrow-width 0;
+    margin-bottom: -3px;
+    margin-top: 5px;
+    left: 0;
+    top: 100%;
+    &.jus-mid {
+      top: 50%;
+      left: 50%;
+    }
+    .tooltip-arrow {
+      border-bottom-color: @tooltip-color;
+    }
+    &.blue-tip .tooltip-arrow {
+      border-bottom-color: @blue;
+    }
+  }
+
+  &.top-left,
+  &.bottom-left {
+    left: auto;
+    right: 0;
+  }
+
+  &.left {
+    top: 0;
+    right: 100%;
+    &.jus-mid {
+      top: 50%;
+      right: 50%;
+      margin-top: -12px;
+    }
+    .tooltip-arrow {
+      border-left-color: @tooltip-color;
+    }
+    &.blue-tip .tooltip-arrow {
+      border-left-color: @blue;
+    }
+  }
+  &.right {
+    top: 0;
+    left: 100%;
+    &.jus-mid {
+      top: 45%;
+      left: 50%;
+      margin-top: -12px;
+    }
+    .tooltip-arrow {
+      border-right-color: @tooltip-color;
+    }
+    &.blue-tip .tooltip-arrow {
+      border-right-color: @blue;
+    }
+  }
+
+  &.blue-tip {
+    .tooltip-inner {
+      background-color: @blue;
+    }
+  }
+}
+.tooltip-inner {
+  background-color: @tooltip-color;
+  color: #fff;
+}

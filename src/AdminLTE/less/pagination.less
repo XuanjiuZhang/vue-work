@@ -1,0 +1,114 @@
+/* PAGINATION */
+
+.pagination {
+  > li > a,
+  > li > span {
+    color: @pagination-color;
+  }
+
+  > li > a,
+  > li > span {
+    &:hover,
+    &:focus {
+      z-index: 2;
+      color: @pagination-active-color;
+      background-color: @pagination-hover-bg;
+    }
+  }
+
+  > .active > a,
+  > .active > span {
+    &,
+    &:hover,
+    &:focus {
+      z-index: 3;
+      color: #fff;
+      background-color: @pagination-active-color;
+      border-color: @pagination-active-color;
+      cursor: default;
+    }
+  }
+
+  > .disabled {
+    > span,
+    > span:hover,
+    > span:focus,
+    > a,
+    > a:hover,
+    > a:focus {
+      color: #818a91;
+      background-color: @pagination-disabled-bg;
+      border-color: @pagination-disabled-border;
+      cursor: @cursor-disabled;
+    }
+  }
+
+  &.pagination-flat {
+    > li > a {
+      .border-radius(0) !important;
+    }
+  }
+
+  &.pagination-outline {
+
+    > li > a,
+    > li > span {
+      &:hover,
+      &:focus {
+        z-index: 2;
+        color: @pagination-active-color;
+        background-color: transparent;
+        border-color: @pagination-active-color;
+      }
+    }
+
+    > .active > a,
+    > .active > span {
+      &,
+      &:hover,
+      &:focus {
+        z-index: 3;
+        color: @pagination-active-color;
+        background-color: fadeout(@pagination-active-color, 90%);
+        border-color: @pagination-active-color;
+        cursor: default;
+      }
+    }
+
+    > .disabled {
+      > span,
+      > span:hover,
+      > span:focus,
+      > a,
+      > a:hover,
+      > a:focus {
+        color: #818a91;
+        border-color: @pagination-disabled-border;
+      }
+    }
+
+  }
+}
+
+.pagination-nav {
+  margin: 20px 0;
+  text-align: right;
+  > .pagination {
+    margin: 0 12px;
+  }
+
+  > .pagination-info {
+    margin-bottom: 0;
+    .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+      margin: 0 3px;
+    }
+  }
+
+  > .pagination-to {
+    width: 120px;
+  }
+
+}

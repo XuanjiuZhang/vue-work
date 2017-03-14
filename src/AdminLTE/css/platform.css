@@ -1,0 +1,98 @@
+.button-grp {
+  width: 260px;
+  margin: 0 auto;
+  text-align: center;
+}
+.button-grp .btn {
+  width: 120px;
+  text-align: center;
+}
+.button-grp .btn + .btn {
+  margin-left: 15px;
+}
+/*platform.rights.new start--*/
+.assign-title {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  line-height: 1;
+  border-left: 3px solid #0c8eff;
+}
+/*platform.rights.new end--*/
+/*platform.styleManage.list --开始*/
+.style-m-cont {
+  margin-top: 15px;
+}
+.style-m-list li {
+  min-width: 320px;
+  float: left;
+  margin: 15px 0;
+}
+.style-m-item {
+  width: 282px;
+  margin: 0 auto;
+  border: 1px solid #f2f3f5;
+  box-shadow: 0 0 3px 1px rgba(203, 211, 222, 0.1);
+}
+.sm-i-body {
+  position: relative;
+}
+.sm-i-body .sm-i-img {
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.sm-i-body .sm-i-img img {
+  min-width: 100%;
+  min-height: 100%;
+}
+.sm-i-body .sm-i-txt {
+  padding: 10px 15px 0;
+}
+.sm-i-body .sm-i-status {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  padding: 3px 10px 3px 6px;
+  border-radius: 0 20px 20px 0;
+}
+.sm-i-operate {
+  border-top: 1px solid #f2f3f5;
+  padding: 10px;
+  height: 51px;
+}
+.four-btn .sm-i-operate .btn {
+  width: 23.5%;
+}
+.three-btn .sm-i-operate .btn {
+  width: 31.8%;
+}
+.two-btn .sm-i-operate .btn {
+  width: 49%;
+}
+.one-btn .sm-i-operate .btn {
+  width: 100%;
+}
+/*platform.styleManage.list --结束*/
+/*弹窗*/
+.c-modal {
+  /*日志详情—弹框 start*/
+  /*日志详情—弹框 end*/
+}
+.c-modal .log-info ul li {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+.account-info.ng-hide-add,
+.account-info.ng-hide-remove {
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+.account-info.ng-hide {
+  height: 0;
+}
+.account-info {
+  overflow: hidden;
+  height: 400px;
+}

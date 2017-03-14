@@ -19,10 +19,20 @@ gulp.task('clean', function(){
 gulp.task('copy', function(){
   gulp.src(['./src/tagManage/tagManage.html'])
     .pipe(gulp.dest('./assets/'));
+  gulp.src('./src/img/*')
+    .pipe(gulp.dest('dist/img'));  
+  gulp.src(['./src/AdminLTE/fonts/*'])
+    .pipe(gulp.dest('./dist/fonts/'));
+  gulp.src(['./src/platform/platformBackend.html'])
+    .pipe(gulp.dest('./dist/'));
+  gulp.src(['./src/platform/style/vendor.min.css'])
+    .pipe(gulp.dest('./dist/style/'));
   return gulp.src(['./src/tagManage/style/*'])
     .pipe(gulp.dest('./assets/style/'));
   
 });
+
+
 
 gulp.task('dev', ['copy'],function() {
   config.entry.tagManage.unshift('webpack-dev-server/client?http://localhost:8086/', 'webpack/hot/only-dev-server');

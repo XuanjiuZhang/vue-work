@@ -1,0 +1,233 @@
+/*
+ * Core: General Layout Style
+ * -------------------------
+ */
+html,
+body {
+  height: 100%;
+  .layout-boxed & {
+    height: 100%;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+sub {
+  bottom: 0;
+}
+p {
+  word-break: break-all;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+.mt35 {
+  margin-top: 35px;
+}
+.mr15 {
+  margin-right: 15px;
+}
+.mr25 {
+  margin-right: 25px;
+}
+.mt15 {
+  margin-top: 15px;
+}
+.mb15 {
+  margin-bottom: 15px;
+}
+.mtb10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.p15 {
+  padding: 15px;
+}
+.plr15 {
+  padding: 0 15px;
+}
+.vertical-middle {   //垂直居中
+  display: table;
+  .middle-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Layout */
+.wrapper {
+  .clearfix();
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+  .layout-boxed & {
+    max-width: 1250px;
+    margin: 0 auto;
+    min-height: 100%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+  }
+}
+
+.layout-boxed {
+  background: url('@{boxed-layout-bg-image-path}') repeat fixed;
+}
+
+/*
+ * Content Wrapper - contains the main content
+ * ```.right-side has been deprecated as of v2.0.0 in favor of .content-wrapper  ```
+ */
+.content-wrapper,
+.right-side,
+.main-footer {
+  //Using disposable variable to join statements with a comma
+  @transition-rule: @transition-speed @transition-fn,
+  margin @transition-speed @transition-fn;
+  .transition-transform(@transition-rule);
+  margin-left: @sidebar-width;
+  z-index: 820;
+  //Top nav layout
+  .layout-top-nav & {
+    margin-left: 0;
+  }
+  @media (max-width: @screen-xs-max) {
+    margin-left: 0;
+  }
+  //When opening the sidebar on large screens
+  .sidebar-collapse & {
+    @media (min-width: @screen-sm) {
+      margin-left: 0;
+    }
+  }
+  //When opening the sidebar on small screens
+  .sidebar-open & {
+    @media (max-width: @screen-xs-max) {
+      .translate(@sidebar-width, 0);
+    }
+  }
+}
+
+.content-wrapper,
+.right-side {
+  min-height: 100%;
+  background-color: @body-bg;
+  z-index: 800;
+}
+
+.main-footer {
+  background: @body-bg;
+  padding: 20px;
+  color: #8695a8;
+  border-top: 1px solid #dee3e9;
+}
+
+/* Fixed layout */
+.fixed {
+  .main-header,
+  .main-sidebar,
+  .left-side {
+    position: fixed;
+  }
+  .main-header {
+    top: 0;
+    right: 0;
+    left: @sidebar-width;
+  }
+  .content-wrapper,
+  .right-side {
+    padding-top: @navbar-height;
+    @media (max-width: @screen-header-collapse) {
+      padding-top: (@navbar-height * 2);
+    }
+  }
+  &.layout-boxed {
+    .wrapper {
+      max-width: 100%;
+    }
+  }
+}
+
+body.hold-transition {
+  .content-wrapper,
+  .right-side,
+  .main-footer,
+  .main-sidebar,
+  .left-side,
+  .main-header .navbar,
+  .main-header .logo {
+    /* Fix for IE */
+    .transition(none);
+  }
+}
+
+/* Content */
+.content {
+  //min-height: 250px;
+  padding: 15px;
+  .container-fixed(@grid-gutter-width);
+}
+
+/* General Links */
+a {
+  color: @link-color;
+}
+
+a:hover,
+a:active,
+a:focus {
+  outline: none;
+  text-decoration: none;
+  color: @link-hover-color;
+}
+
+/* Page Header */
+.page-header {
+  margin: 10px 0 20px 0;
+  font-size: 22px;
+
+  > small {
+    color: #666;
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+//.text-muted {
+//  color: @text-muted;
+//}
+.text-primary {
+  .text-emphasis-variant(@light-blue);
+}
+.text-success {
+  .text-emphasis-variant(@green);
+}
+.text-info {
+  .text-emphasis-variant(@aqua);
+}
+.text-warning {
+  .text-emphasis-variant(@yellow);
+}
+.text-danger {
+  .text-emphasis-variant(@red);
+}

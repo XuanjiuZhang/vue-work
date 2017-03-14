@@ -1,0 +1,100 @@
+/*
+ * Skin: Blue
+ * ----------
+ */
+@import "../../bootstrap-less/mixins.less";
+@import "../../bootstrap-less/variables.less";
+@import "../variables.less";
+@import "../mixins.less";
+
+body {
+  background-color: @body-bg;
+  color: @body-color;
+}
+
+.text-muted {
+  color: @text-muted-color;
+}
+
+.text-light {
+  color: @param-color;
+}
+
+p {
+  color: @param-color;
+}
+a {
+  color: @anchor-color;
+}
+.size-lg {
+  font-size: 16px;
+}
+
+.skin-blue {
+  //Navbar
+  .main-header {
+    background-color: @custom-head-bg;
+    color: @custom-head-color;
+    .navbar {
+      .navbar-variant(@custom-head-bg; @custom-head-color);
+      .nav > li > a {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+          color: @custom-head-color;
+
+        }
+      }
+      .sidebar-toggle {
+        color: #556d89;
+        &:hover,
+        &:active {
+          background-color: #dde1e5;
+          color: lighten(#556d89, 5%);
+        }
+      }
+      @media (max-width: @screen-header-collapse) {
+        .dropdown-menu {
+          li {
+            &.divider {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+            a {
+              color: #fff;
+              &:hover {
+                background: darken(@custom-head-bg, 5%);
+              }
+            }
+          }
+        }
+      }
+    }
+    //Logo
+    .logo {
+      .logo-variant(@custom-head-bg);
+    }
+
+    // 收缩菜单按钮
+    .sidebar-toggle{
+      background-color: darken(transparent, 5%);
+    }
+
+    li.user-header {
+      background-color: lighten(@sidebar-bg, 10%);
+    }
+  }
+
+  //Content Header
+  .content-header {
+    background: transparent;
+  }
+
+  //Create the sidebar skin
+  .skin-dark-sidebar();
+
+}
+
+.skin-blue.layout-top-nav .main-header > .logo {
+  .logo-variant(@custom-head-bg);
+}
