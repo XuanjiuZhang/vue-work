@@ -16,7 +16,7 @@ router.afterEach((to, from) => {
   // ...
   console.log(to);
   createStore.commit('routeChange', { to });
-})
+});
 
 window.onload = function(){
   new Vue({

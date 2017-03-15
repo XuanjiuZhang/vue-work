@@ -81,6 +81,14 @@ Vue.use(eleInput);
 import LeftSide from './LeftSideBar/LeftSide.vue';
 import PlatformContent from './content/Content.vue';
 import PlatformHeader from './header/Header.vue';
+// import eleSelect from 'eleUI/select/index';
+// Vue.use(eleSelect);
+import {
+  Select,
+  Option
+} from 'element-ui';
+Vue.use(Select);
+Vue.use(Option);
 
 export default {
   data(){

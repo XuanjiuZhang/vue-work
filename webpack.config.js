@@ -33,6 +33,7 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
+        // use: ['babel-loader', 'vue-loader'],
         loader: 'vue-loader',
       },
       {
