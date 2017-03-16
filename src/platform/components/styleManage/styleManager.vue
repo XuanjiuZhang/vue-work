@@ -29,8 +29,8 @@
           </div>
 
           <div class="form-group">
-            <el-select v-model="value" placeholder="请选择">
-              <el-option v-for="(item, index) in 5" :key="index" :label="'item.label'" value="fdsklf">
+            <el-select v-model="industrySelected" placeholder="请选择">
+              <el-option v-for="(item, index) in industryList" :key="index" :label="item.name" :value="item.id">
               </el-option>
             </el-select>
             <!--<select class="form-control" ng-options="item as item.name for item in industryList" ng-model="industrySelected" ng-change="paginationQuery()"></select>-->
@@ -78,16 +78,14 @@
             </div>
           </div>-->
         </div>
-
+        <div class="style-m-cont">
+          <ul class="style-m-list clearfix">
+            <li v-for="data in 5">
+              <Style-item></Style-item>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="style-m-cont">
-        <ul class="style-m-list clearfix">
-          <li v-for="data in 5">
-            <Style-item></Style-item>
-          </li>
-        </ul>
-      </div>
-      
     </div>
   </div>
 </template>
@@ -107,7 +105,8 @@
 <script>
   import Vue from 'vue';
   import {
-    mapGetters
+    mapGetters,
+    mapActions
   } from 'vuex';
   import StyleItem from './StyleItem.vue';
 
@@ -115,11 +114,12 @@
     data() {
       return {
         currentTabIndex: 0,
-        tabArr: ['所有风格', '待审核', '待上架', '已上架', '审核失败']
+        tabArr: ['所有风格', '待审核', '待上架', '已上架', '审核失败'],
+        industrySelected: {  }
       };
     },
     computed: {
-    ...mapGetters(['currentRouteName']),
+    ...mapGetters(['industryList']),
       bodyMinHeight() {
         return {
           'minHeight': document.body.clientHeight - 172 + 'px'
@@ -127,9 +127,10 @@
       }
     },
     mounted() {
-
+      this.getIndustry();
     },
     methods: {
+      ...mapActions(['getIndustry']),
       activeTab(index) {
         this.currentTabIndex = index;
       }

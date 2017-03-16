@@ -34,7 +34,7 @@ gulp.task('copy', function(){
 
 
 
-gulp.task('dev', ['copy'],function() {
+gulp.task('dev', ['copy'], function() {
   config.entry.tagManage.unshift('webpack-dev-server/client?http://localhost:8086/', 'webpack/hot/only-dev-server');
 
   var compiler = webpack(config);
@@ -48,7 +48,24 @@ gulp.task('dev', ['copy'],function() {
     publicPath: '/assets/',
     // match the output `publicPath`
 
-    stats: { colors: true }
+    stats: { colors: true },
+
+    proxy: {
+      "/cms/**/*": {
+        target: "http://192.168.51.22/"
+      },
+      '/cdn/**/*': {
+        target: 'http://192.168.51.22/'
+      }
+    },
+    // proxy: {
+    //   '/cms/*': {
+    //     target: 'http://192.168.51.22/'
+    //   },
+    //   '/cdn/*': {
+    //     target: 'http://192.168.51.22/'
+    //   }
+    // }
   });
   server.listen(8086);
 });

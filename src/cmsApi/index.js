@@ -23,3 +23,5 @@ import createTemplateAndSite from './templateAndSite';
 const apiObj = {
   templateAndSite: createTemplateAndSite(config.siteAPI)
 }
+
+export default apiObj;

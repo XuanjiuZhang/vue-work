@@ -15,7 +15,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.js',
       'eleUI': path.resolve(__dirname, 'src/eleUI/packages'),
-      'eleUIStyle': path.resolve(__dirname, 'src/eleUI/theme-default')
+      'eleUIStyle': path.resolve(__dirname, 'src/eleUI/theme-default'),
+      'cmsApi': path.resolve(__dirname, 'src/cmsApi/index.js')
     }
   }, 
   context: __dirname + "/src",
@@ -60,16 +61,25 @@ module.exports = {
 
   },
   devtool: '#eval-source-map',
-  devServer: {
-    hot: true,
-    // enable HMR on the server
+  // devServer: {
+  //   hot: true,
+  //   // enable HMR on the server
 
-    contentBase: path.resolve( __dirname ,'./'),
-    // match the output path
+  //   contentBase: path.resolve( __dirname ,'./'),
+  //   // match the output path
 
-    publicPath: '/assets/fonts/'
-    // match the output `publicPath`
-  },
+  //   publicPath: '/assets/fonts/',
+  //   // match the output `publicPath`
+
+  //   proxy: {
+  //     "/cms/**/*": {
+  //       target: "http://192.168.51.22/"
+  //     },
+  //     '/cdn/**/*': {
+  //       target: 'http://192.168.51.22/'
+  //     }
+  //   },
+  // },
   // watch: true,
   plugins: [
     new webpack.DefinePlugin({

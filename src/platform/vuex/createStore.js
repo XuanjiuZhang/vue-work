@@ -1,16 +1,19 @@
 import Vuex from 'Vuex';
 import Vue from 'vue'
 Vue.use(Vuex);
+import cmsApi from 'cmsApi';
 
 const store = new Vuex.Store({
   state: {
+    cmsApi,
     currentRoute: { to: {} },
     currentUser: {},
     allStyleArr: [],
     styleQuery: {},
     allCaseArr: [],
     caseQuery: {},
-    showSideBar: true
+    showSideBar: true,
+    industryList: []
   },
   mutations: {
     routeChange(state, payload) {
@@ -18,6 +21,9 @@ const store = new Vuex.Store({
     },
     toggleSidebar(state) {
       state.showSideBar = !state.showSideBar;
+    },
+    initIndustry(state, payload) {
+      state.industryList = payload.data;
     }
   },
   getters: {
@@ -39,13 +45,21 @@ const store = new Vuex.Store({
     breadcrumb(state){
       const { to : { path = '/styleManage' } = {} } = state.currentRoute;
       return {};
+    },
+    industryList(state){
+      return state.industryList;
     }
   },
   actions: {
-    increment (context) {
-      setTimeout(() => {
-        context.commit('increment', {amount: 10})
-      }, 1000);
+    getIndustry (context) {
+      cmsApi.templateAndSite.getAllIndustry().then(response => {
+        if(!response.ok){
+          return 
+        }
+        return response.json();
+      }).then(data => {
+        context.commit('initIndustry', { data })
+      });
     }
   }
 });

@@ -7,6 +7,7 @@ window._ = _;
 import VueRouter from 'vue-router'
 Vue.use(VueRouter); 
 import router from './router';
+import './style/less.less';
 
 // router.beforeEach((to, from, next) => {
 //   // ...
