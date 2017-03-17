@@ -16,7 +16,9 @@
         <router-link to="/caseManage">Go to news</router-link>
         <router-link to="/order">Go to about</router-link>
       </p>-->
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
     <!-- / content -->
   </div>

@@ -1,5 +1,8 @@
 import config from './config';
 import createTemplateAndSite from './templateAndSite';
+import createStyle from './style';
+import URLSearchParams from 'url-search-params';
+global.URLSearchParams = URLSearchParams;
 
 // const createInterceptedFetch = (fetch, notOk, onErr) => {
 //   return (request) => {
@@ -21,7 +24,8 @@ import createTemplateAndSite from './templateAndSite';
 // }
 
 const apiObj = {
-  templateAndSite: createTemplateAndSite(config.siteAPI)
+  templateAndSite: createTemplateAndSite(config.siteAPI),
+  style: createStyle(config.siteAPI)
 }
 
 export default apiObj;

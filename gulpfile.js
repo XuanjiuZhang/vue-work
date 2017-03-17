@@ -25,7 +25,7 @@ gulp.task('copy', function(){
     .pipe(gulp.dest('./dist/fonts/'));
   gulp.src(['./src/platform/platformBackend.html'])
     .pipe(gulp.dest('./dist/'));
-  gulp.src(['./src/platform/style/vendor.min.css'])
+  gulp.src(['./src/platform/style/*'])
     .pipe(gulp.dest('./dist/style/'));
   return gulp.src(['./src/tagManage/style/*'])
     .pipe(gulp.dest('./assets/style/'));

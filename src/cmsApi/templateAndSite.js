@@ -3,7 +3,7 @@ import querystring from 'query-string';
 
 const createUrlRequest = (siteAPI) => {
   const genSearchParams = (paramsObj) => {
-    return URLSearchParams(querystring.stringify(paramsObj));
+    return new global.URLSearchParams(querystring.stringify(paramsObj));
   };
   return {
     getSiteUser (paramsObj) {

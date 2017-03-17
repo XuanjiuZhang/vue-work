@@ -14,6 +14,13 @@
         <b>Version</b> 0.0.1
       </div>
       湖南竞网智赢技术支持
+      <!--<modal title="Modal Title" :show.sync="true" @ok="ok" @cancel="cancel">
+          <div>Modal Body</div>
+
+          <div slot="header">Modal Header</div>
+          <div slot="title">Modal Title</div>
+          <div slot="footer">Modal Footer</div>
+      </modal>-->
       <strong>Copyright &copy; 2016 <a href="#">cms</a>.</strong> All rights
       reserved.
     </footer>
@@ -58,6 +65,7 @@
       <!--<i class="fa fa-refresh fa-spin"></i>-->
       <!--<span>加载中...</span>-->
     </div>
+    
   </div>
 </template>
 
@@ -89,6 +97,11 @@ import {
 } from 'element-ui';
 Vue.use(Select);
 Vue.use(Option);
+
+// import BootstrapVue from 'bootstrap-vue';
+// Vue.use(BootstrapVue);
+import Modal from 'thirdModal';
+Vue.component('modal', Modal);
 
 export default {
   data(){

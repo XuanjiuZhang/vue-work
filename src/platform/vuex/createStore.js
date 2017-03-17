@@ -13,7 +13,19 @@ const store = new Vuex.Store({
     allCaseArr: [],
     caseQuery: {},
     showSideBar: true,
-    industryList: []
+    industryList: [],
+    purposeList: [],
+    colorList: [],
+    templateStyle: [{
+      name: '全部种类',
+      id: undefined
+    },{
+      name: 'PC端',
+      id: 'ccccc8c9-a51c-49eb-a433-0ce47b66dc00'
+    }, {
+      name: '移动端',
+      id: 'aaccc8c9-a51c-49eb-a433-0ce47b66dc00'
+    }]
   },
   mutations: {
     routeChange(state, payload) {
@@ -24,6 +36,12 @@ const store = new Vuex.Store({
     },
     initIndustry(state, payload) {
       state.industryList = payload.data;
+    },
+    initPurpose(state, payload){
+      state.purposeList = payload.data;
+    },
+    initColor(state, payload){
+      state.colorList = payload.data;
     }
   },
   getters: {
@@ -48,6 +66,19 @@ const store = new Vuex.Store({
     },
     industryList(state){
       return state.industryList;
+    },
+    purposeList(state){
+      return state.purposeList;
+    },
+    colorList(state){
+      return state.colorList;
+    },
+    templateStyle(state){
+      console.log(state.templateStyle);
+      return state.templateStyle;
+    },
+    cmsApi(state){
+      return state.cmsApi;
     }
   },
   actions: {
@@ -58,7 +89,30 @@ const store = new Vuex.Store({
         }
         return response.json();
       }).then(data => {
+        data.unshift({ name: '全部行业', id: undefined });
         context.commit('initIndustry', { data })
+      });
+    },
+    getPurpose (context) {
+      cmsApi.templateAndSite.getAllPurpose().then(response => {
+        if(!response.ok){
+          return 
+        }
+        return response.json();
+      }).then(data => {
+        data.unshift({ name: '全部用途', id: undefined });
+        context.commit('initPurpose', { data })
+      });
+    },
+    getColor (context) {
+      cmsApi.style.getAllColor().then(response => {
+        if(!response.ok){
+          return 
+        }
+        return response.json();
+      }).then(data => {
+        data.list.unshift({ name: '全部颜色', id: undefined });
+        context.commit('initColor', { data: data.list })
       });
     }
   }

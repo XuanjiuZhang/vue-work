@@ -1,0 +1,158 @@
+@images: '../../img';
+
+.s-cover {
+  display: inline-block;
+  width: 82px;
+  height: 82px;
+  line-height: 1;
+  text-align: center;
+  border: 1px solid #cbd3de;
+  border-radius: 4px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+/*platform.rights.new start--*/
+.assign-title {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  line-height: 1;
+  border-left: 3px solid #0c8eff;
+}
+/*platform.rights.new end--*/
+
+/*platform.styleManage.list --开始*/
+.style-item .option-one {
+  padding: 5px 15px 0;
+}
+.style-m-cont {
+  margin-top: 15px;
+}
+.style-m-list {
+  li {
+    min-width: 320px;
+    float: left;
+    margin: 15px 0;
+  }
+}
+.style-m-item {
+  position: relative;
+  width: 282px;
+  margin: 0 auto;
+  border: 1px solid #f2f3f5;
+  box-shadow: 0 0 3px 1px rgba(203, 211, 222, .1);
+}
+.sm-i-body {
+  position: relative;
+  .sm-i-img {
+    position: relative;
+    height: 178px;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+    .sm-i-hover {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      background-color: rgba(40, 40, 40, .85);
+      .vertical-middle {
+        width: 100%;
+        height: 100%;
+      }
+      .btn {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+      .btn + .btn {
+        margin-left: 10px;
+      }
+    }
+    &:hover .sm-i-hover {
+      display: block;
+    }
+  }
+  .sm-i-txt {
+    padding: 10px 15px 0;
+    text-align: left;
+    &,
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .sm-i-status {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    padding: 3px 10px 3px 6px;
+    border-radius: 0 20px 20px 0;
+  }
+}
+.sm-i-operate {
+  border-top: 1px solid #f2f3f5;
+  padding: 10px;
+  height: 51px;
+  .btn {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.six-btn .sm-i-operate .btn {
+  width: 15.2%;
+}
+.five-btn .sm-i-operate .btn {
+  width: 18.7%;
+}
+.four-btn .sm-i-operate .btn {
+  width: 23.5%;
+}
+.three-btn .sm-i-operate .btn {
+  width: 31.8%;
+}
+.two-btn .sm-i-operate .btn {
+  width: 49%;
+}
+.one-btn .sm-i-operate .btn {
+  width: 100%;
+}
+.btn-operate-opt {
+  margin-top: -43px;
+}
+/*platform.styleManage.list --结束*/
+
+/*弹窗*/
+.c-modal {
+
+  /*日志详情—弹框 start*/
+  .log-info {
+    ul li {
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+  }
+  /*日志详情—弹框 end*/
+
+}
+
+//过渡效果
+.account-info.ng-hide-add, .account-info.ng-hide-remove {
+  -webkit-transition: all .5s ease-in ;
+  transition: all .5s ease-in;
+}
+.account-info.ng-hide {
+  height: 0;
+}
+.account-info{
+  overflow: hidden;
+  height: 400px;
+}
