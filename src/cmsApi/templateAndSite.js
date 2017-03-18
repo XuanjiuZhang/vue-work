@@ -2,18 +2,19 @@
 import querystring from 'query-string';
 
 const createUrlRequest = (siteAPI) => {
-  const genSearchParams = (paramsObj) => {
-    return new global.URLSearchParams(querystring.stringify(paramsObj));
+  const parseParamsObj = (paramsObj) => {
+    const paramsString = querystring.stringify(paramsObj);
+    return new global.URLSearchParams(paramsString);
   };
   return {
     getSiteUser (paramsObj) {
-      const url = siteAPI + 'site/getalluser';
+      const searchParams = parseParamsObj(paramsObj);
+      const url = siteAPI + 'site/getalluser?${searchParams}';
       return fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: genSearchParams(paramsObj)
+        }
       });
     },
 
@@ -38,6 +39,46 @@ const createUrlRequest = (siteAPI) => {
         }
       });
     },
+
+    getPlatFormTemplateQuery (paramsObj) {
+      const searchParams = parseParamsObj(paramsObj);
+      const url = `${siteAPI}site/gettemplateonplat?${searchParams}`;
+      return fetch(url, {
+        credentials: 'include', 
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      
+    },
+
+    getPlatFormSiteQuery (paramsObj) {
+      const searchParams = parseParamsObj(paramsObj);
+      const url = `${siteAPI}site/getsiteonplat?${searchParams}`;
+      return fetch(url, {
+        credentials: 'include', 
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+    },
+
+    getAllCustomer (paramsObj) {
+      const searchParams = parseParamsObj(paramsObj);
+      const url = `${siteAPI}site/getallcustomeronplat?${searchParams}`;
+      return fetch(url, {
+        credentials: 'include', 
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      
+    },
+
   }
 
 }

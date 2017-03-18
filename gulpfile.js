@@ -42,7 +42,7 @@ gulp.task('dev', ['copy'], function() {
     hot: true,
     // enable HMR on the server
 
-    contentBase: path.resolve(__dirname, './'),
+    contentBase: path.resolve(__dirname, './dist'),
     // match the output path
 
     publicPath: '/assets/',

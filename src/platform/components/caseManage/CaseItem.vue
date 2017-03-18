@@ -26,17 +26,11 @@
 
     <div class="sm-i-operate btn-group-sm text-center">
       <button v-if="styleData._labelContent.text === '待审核'"
-              @click="doAuditPlatform(2)"
+              @click="doAuditCasePlatform(2)"
               class="btn btn-default hover-danger-o">通过</button>
       <button v-if="styleData._labelContent.text === '待审核'"
-              @click="doAuditPlatform(3)"
+              @click="doAuditCasePlatform(3)"
               class="btn btn-default hover-danger-o">不通过</button>
-      <button v-if="styleData._labelContent.text === '下架中'"
-              @click="shelvesPlatform('up')"
-              class="btn btn-default hover-danger-o">上架</button>
-      <button v-if="styleData._labelContent.text === '出售中'"
-              @click="shelvesPlatform('down')"
-              class="btn btn-default hover-danger-o">下架</button>
       <button v-if="styleData._labelContent.text === '上架审核不通过'"
               @click="cancelAudit"
               class="btn btn-default hover-danger-o">取消审核</button>
@@ -64,9 +58,7 @@
         switch (this.styleData._labelContent.text){
           case '待审核':
           return 2;
-          case '下架中':
-          return 1;
-          case '出售中':
+          case '已上架':
           return 1;
           case '上架审核不通过':
           return 1;
@@ -94,12 +86,12 @@
         });
         
       },
-      doAuditPlatform (isagree) {
+      doAuditCasePlatform (isagree) {
         const params = {
           isagree,
           styleid: this.styleData.id,
         };
-        this.cmsApi.style.auditSiteStylePlatform(params).then(response => {
+        this.cmsApi.style.doAuditCasePlatform(params).then(response => {
           if(!response.ok){
             return
           }
@@ -108,21 +100,8 @@
           this.updateData();
         });
       },
-      shelvesPlatform(op) {
-        this.cmsApi.style.platformUpDownShelves({
-          styleid: this.styleData.id,
-          status: op === 'up' ? 0 : 1
-        }).then(res => {
-          if(!res.ok){
-            return 
-          }
-          return res.json();
-        }).then(data => {
-          this.updateData();
-        });
-      },
       cancelAudit() {
-        this.cmsApi.style.cancelStyleSecondAudit({
+        this.cmsApi.style.cancelCaseAudit({
           styleid: this.styleData.id
         }).then(res => {
           if(!res.ok){

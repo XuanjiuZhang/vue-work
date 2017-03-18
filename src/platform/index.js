@@ -2,7 +2,7 @@ import Vue from 'vue'
 import _ from 'underscore';
 import createStore from './vuex/createStore';
 import cmsApi from '../cmsApi/index';
-import platformWrapper from './components/PlatformWrapper'
+import platformWrapper from './components/PlatformWrapper';
 window._ = _;
 import VueRouter from 'vue-router'
 Vue.use(VueRouter); 

@@ -40,12 +40,12 @@
             // 确认按钮text
             okText: {
                 type: String,
-                default: 'OK'
+                default: '确定'
             },
             // 取消按钮text
             cancelText: {
                 type: String,
-                default: 'Cancel'
+                default: '取消'
             },
             // 确认按钮className
             okClass: {
@@ -67,7 +67,15 @@
             },
             top: {
                 type: Number,
-                default: 400
+                default: 300
+            },
+            showHeader: {
+                type: String,
+                default: 'true'
+            },
+            showFooter: {
+                type: String,
+                default: 'true'
             }
         },
         data () {
@@ -139,7 +147,7 @@
             <div class="modal-dialog" :class="modalClass" ref="dialog" :style="{'top': top + 'px'}">
                 <div class="modal-content">
                     <!--Header-->
-                    <div class="modal-header">
+                    <div class="modal-header" v-show="showHeader === 'true'">
                         <slot name="header">
                             <a type="button" class="close" @click="cancel">x</a>
                             <h4 class="modal-title">
@@ -154,7 +162,7 @@
                         <slot></slot>
                     </div>
                     <!--Footer-->
-                    <div class="modal-footer">
+                    <div class="modal-footer" v-show="showFooter === 'true'">
                         <slot name="footer">
                             <button type="button" :class="cancelClass" @click="cancel">{{cancelText}}</button>
                             <button type="button" :class="okClass" @click="ok">{{okText}}</button>

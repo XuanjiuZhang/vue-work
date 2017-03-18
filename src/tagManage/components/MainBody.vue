@@ -36,8 +36,8 @@ import {
   // 引入eleUI控件
 // import 'element-ui/lib/theme-default/index.css';
 import 'eleUIStyle/index.css';
-import eleTree from 'eleUI/tree/index';
-import eleInput from 'eleUI/input/index';
+import eleTree from 'myEleUI/tree/index';
+import eleInput from 'myEleUI/input/index';
 Vue.use(eleTree);
 Vue.use(eleInput);
 // import {

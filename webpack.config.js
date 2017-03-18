@@ -14,7 +14,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.css', '.less', '.vue'],
     alias: {
       'vue$': 'vue/dist/vue.js',
-      'eleUI': path.resolve(__dirname, 'src/eleUI/packages'),
+      'myEleUI': path.resolve(__dirname, 'src/eleUI/packages'),
       'eleUIStyle': path.resolve(__dirname, 'src/eleUI/theme-default'),
       'cmsApi': path.resolve(__dirname, 'src/cmsApi/index.js'),
       'thirdModal': path.resolve(__dirname, 'src/thirdParty/modal.vue')

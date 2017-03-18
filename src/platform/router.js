@@ -8,11 +8,14 @@ const UserProfile = { template: '<div>this is UserProfile</div>' };
 const UserPosts = { template: '<div>this is UserPosts</div>' };
 
 import StyleManager from './components/styleManage/StyleManager.vue';
+import CaseManager from './components/caseManage/CaseManager.vue';
+import OrderManager from './components/orderManage/OrderManager.vue';
 
 const routes = [
   { path: '/styleManage', component: StyleManager, name: '风格管理' },
-  {
-    path: '/caseManage', component: news, name: '案例管理', children: [
+  { path: '/caseManage', component: CaseManager, name: '案例管理' },
+  /*{
+    path: '/caseManage', component: StyleManager, name: '案例管理', children: [
       {
         // 当 /user/:id/profile 匹配成功，
         // UserProfile 会被渲染在 User 的 <router-view> 中
@@ -28,8 +31,8 @@ const routes = [
         component: UserPosts
       }
     ]
-  },
-  { path: '/order', component: about, name: '工单管理' },
+  },*/
+  { path: '/order', component: OrderManager, name: '工单管理' },
   { path: '/log', component: UserProfile, name: '日志管理' },
   { path: '/role', component: UserProfile, name: '角色管理' },
   { path: '/employee', component: about, name: '员工管理' }

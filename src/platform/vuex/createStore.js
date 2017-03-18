@@ -115,6 +115,7 @@ const store = new Vuex.Store({
         context.commit('initColor', { data: data.list })
       });
     }
+
   }
 });
 

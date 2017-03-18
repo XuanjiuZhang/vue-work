@@ -84,8 +84,10 @@ import {
     mapGetters
   } from 'vuex';
 import 'eleUIStyle/index.css';
-import eleInput from 'eleUI/input/index';
-Vue.use(eleInput);
+import eleInput from 'myEleUI/input/index';
+// import elePagination from 'myEleUI/pagination/index';
+Vue.use(eleInput);  
+// Vue.use(elePagination);
 import LeftSide from './LeftSideBar/LeftSide.vue';
 import PlatformContent from './content/Content.vue';
 import PlatformHeader from './header/Header.vue';
@@ -93,10 +95,12 @@ import PlatformHeader from './header/Header.vue';
 // Vue.use(eleSelect);
 import {
   Select,
-  Option
+  Option, 
+  // Pagination
 } from 'element-ui';
 Vue.use(Select);
 Vue.use(Option);
+// Vue.use(Pagination);
 
 // import BootstrapVue from 'bootstrap-vue';
 // Vue.use(BootstrapVue);

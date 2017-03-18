@@ -101,7 +101,7 @@
         <div class="style-m-cont">
           <ul class="style-m-list clearfix">
             <li v-for="data in filteredShowStyleList">
-              <Style-item :key="data.id" :styleData="data" @updateStyleData="updateStyleData"></Style-item>
+              <Case-item :key="data.id" :styleData="data" @updateStyleData="updateStyleData"></Case-item>
             </li>
             <infinite-loading key="infinite-loading" v-if="firstLoadSuc" :on-infinite="onInfinite" ref="infiniteLoading">
               <span slot="no-more">
@@ -119,21 +119,6 @@
   </div>
 </template>
 
-<style lang="less" scoped>
-  .component-fade-enter-active,
-  .component-fade-leave-active {
-    transition: opacity .1s ease;
-  }
-  
-  .component-fade-enter,
-  .component-fade-leave-active {
-    opacity: 0;
-  }
-
-  .flip-list-move {
-    transition: transform 1s;
-  }
-</style>
 
 <script>
   import Vue from 'vue';
@@ -141,7 +126,7 @@
     mapGetters,
     mapActions
   } from 'vuex';
-  import StyleItem from './StyleItem.vue';
+  import CaseItem from './CaseItem.vue';
   import InfiniteLoading from 'vue-infinite-loading';
   import modalHelper from '../modalHelper/ModalHelper';
 
@@ -166,7 +151,7 @@
     data() {
       return {
         currentTabIndex: 0,
-        tabArr: ['所有风格', '待审核', '出售中', '下架中', '上架审核不通过'],
+        tabArr: ['所有风格', '待审核', '已上架', '案例审核不通过'],
         colorSelected: '',
         industrySelected: '',
         purposeSelected: '',
@@ -208,11 +193,11 @@
             return this.styleList;
           case 1:
             return this.auditingStylelist;
+          /*case 2:
+            return this.onshelvesStylelist;*/
           case 2:
             return this.onshelvesStylelist;
           case 3:
-            return this.offshelvesStylelist;
-          case 4:
             return this.failedStyleList;
         }
       },
@@ -240,7 +225,7 @@
       chooseTemplateOrSite() {
         this.showChooseTpl = !this.showChooseTpl;
         if (this.showChooseTpl && this.platFormTemplate.length === 0) {
-          this.cmsApi.templateAndSite.getPlatFormTemplateQuery({
+          this.cmsApi.templateAndSite.getPlatFormSiteQuery({
             pageindex: 1,
             pagesize: 200
           }).then(response => {
@@ -286,7 +271,7 @@
           mastercolorid: this.colorSelected,
           deviceid: this.deviceSelected
         };
-        this.cmsApi.style.getPlatFormStyleList(query).then(response => {
+        this.cmsApi.style.getPlatFormStyleCaseManageList(query).then(response => {
           if (!response.ok) {
             return;
           }
@@ -309,7 +294,7 @@
           mastercolorid: this.colorSelected,
           deviceid: this.deviceSelected
         };
-        this.cmsApi.style.getPlatFormStyleList(query).then(response => {
+        this.cmsApi.style.getPlatFormStyleCaseManageList(query).then(response => {
           if (!response.ok) {
             return;
           }
@@ -345,7 +330,8 @@
         this.onScroll = false;
 
         this.auditingStylelist = this.styleList.filter(style => {
-          let test = style.auditType === 1 && style.currentAuditStatus === 2 && style.status === 1;
+          let test = (style.auditType === 1 && style.currentAuditStatus === 2 && style.caseStatus === 1) ||
+             (style.auditType === 2 && style.currentAuditStatus === 3 && style.caseStatus === 1);
           if (test) {
             this.$set(style, '_labelContent', {
               className: 'sm-i-status label-warning',
@@ -356,18 +342,18 @@
         });
 
         this.onshelvesStylelist = this.styleList.filter(style => {
-          let test = style.auditType === 2 && style.currentAuditStatus === 2 && style.status === 0;
+          let test = style.auditType === 2 && style.currentAuditStatus === 2 && style.caseStatus === 2;
           if (test) {
             this.$set(style, '_labelContent', {
               className: 'sm-i-status label-success',
-              text: '出售中'
+              text: '已上架'
             });
           }
           return test;
         });
 
         this.offshelvesStylelist = this.styleList.filter(style => {
-          let test = style.auditType === 2 && style.currentAuditStatus === 2 && style.status === 1;
+          let test = false;
           if (test) {
             this.$set(style, '_labelContent', {
               className: 'sm-i-status label-danger',
@@ -378,11 +364,11 @@
         });
 
         this.failedStyleList = this.styleList.filter(style => {
-          let test = style.auditType === 2 && style.currentAuditStatus === 3;
+          let test = style.auditType === 2 && style.currentAuditStatus === 3 && style.caseStatus === 3;
           if (test) {
             this.$set(style, '_labelContent', {
               className: 'sm-i-status label-danger',
-              text: '上架审核不通过'
+              text: '案例审核不通过'
             });
           }
           return test;
@@ -402,7 +388,7 @@
       }
     },
     components: {
-      StyleItem,
+      CaseItem,
       InfiniteLoading,
       modalHelper
     }
