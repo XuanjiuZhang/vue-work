@@ -96,11 +96,13 @@ import PlatformHeader from './header/Header.vue';
 import {
   Select,
   Option, 
-  // Pagination
+  Pagination,
+  DatePicker
 } from 'element-ui';
 Vue.use(Select);
-Vue.use(Option);
-// Vue.use(Pagination);
+Vue.use(Option); 
+Vue.use(Pagination);
+Vue.use(DatePicker);
 
 // import BootstrapVue from 'bootstrap-vue';
 // Vue.use(BootstrapVue);

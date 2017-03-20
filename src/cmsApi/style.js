@@ -123,6 +123,18 @@ const createUrlRequest = (siteAPI) => {
       });
     },
 
+    getTemplateMallStyle (paramsObj) {
+      const searchParams = parseParamsObj(paramsObj);
+      const url = `${siteAPI}/layout_platform/template?${searchParams}`;
+      return fetch(url, {
+        credentials: 'include',
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    }
+
   }
 
 }

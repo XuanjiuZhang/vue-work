@@ -39,7 +39,8 @@
 <script>
   import Vue from 'vue';
   import {
-    mapGetters
+    mapGetters,
+    mapMutations,
   } from 'vuex';
 
   export default {
@@ -52,14 +53,19 @@
       
     },
     methods: {
+      ...mapMutations(['currentOrder']),
       detail(order){
-        
+        this.currentOrder({ currentOrder: order });
+        this.router.push({ path: '/orderDetail'}); 
       }
     },
     computed: {
-      ...mapGetters(['cmsApi'])
+      ...mapGetters(['cmsApi', 'router'])
     },
     mounted() {
+    },
+    activated() {
+      console.log(this.$route)
     },
     components: {
     }
