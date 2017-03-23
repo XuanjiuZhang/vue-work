@@ -103,6 +103,7 @@ Vue.use(Select);
 Vue.use(Option); 
 Vue.use(Pagination);
 Vue.use(DatePicker);
+// Vue.use(Message);
 
 // import BootstrapVue from 'bootstrap-vue';
 // Vue.use(BootstrapVue);

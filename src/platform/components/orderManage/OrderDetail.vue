@@ -7,7 +7,7 @@
             <div class="style-m-item">
               <div class="sm-i-body">
                 <div class="sm-i-img">
-                  <img :src="style.imageUrl" alt="sampleImage">
+                  <img :src="style.imageUrl || './img/style-default-ico.png'" alt="sampleImage">
                   <div class="sm-i-hover">
                     <div class="vertical-middle">
                       <div class="middle-cell">
@@ -77,7 +77,7 @@
                v-for="style in mutableOrderData.siteStyle">
                 <div class="sm-i-body">
                   <div class="sm-i-img">
-                    <img :src="style.imageUrl || './style-default-ico.png'" alt="image">
+                    <img :src="style.imageUrl || './img/style-default-ico.png'" alt="image">
                     <div class="sm-i-hover">
                       <div class="vertical-middle">
                         <div class="middle-cell">
@@ -105,7 +105,7 @@
               <div class="style-m-item pull-left">
                 <div class="sm-i-body">
                   <div class="sm-i-img">
-                    <img src="./style-default-ico.png" alt="default">
+                    <img :src="'./img/style-default-ico.png'" alt="default">
                     <div class="sm-i-hover">
                       <div class="vertical-middle">
                         <div class="middle-cell">

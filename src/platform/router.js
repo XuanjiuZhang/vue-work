@@ -11,6 +11,7 @@ import StyleManager from './components/styleManage/StyleManager.vue';
 import CaseManager from './components/caseManage/CaseManager.vue';
 import OrderManager from './components/orderManage/OrderManager.vue';
 import OrderDetail from './components/orderManage/OrderDetail.vue';
+import LogManager from './components/logManage/LogManager.vue';
 
 const routes = [
   { path: '/styleManage', component: StyleManager, name: '风格管理' },
@@ -35,7 +36,7 @@ const routes = [
   },*/
   { path: '/order', component: OrderManager, name: '工单管理' },
   { path: '/orderDetail', component: OrderDetail, name: '工单详情' },
-  { path: '/log', component: UserProfile, name: '日志管理' },
+  { path: '/log', component: LogManager, name: '日志管理' },
   { path: '/role', component: UserProfile, name: '角色管理' },
   { path: '/employee', component: about, name: '员工管理' }
 ];
