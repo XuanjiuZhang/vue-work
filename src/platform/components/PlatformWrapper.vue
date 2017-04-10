@@ -91,7 +91,7 @@ Vue.use(eleInput);
 import LeftSide from './LeftSideBar/LeftSide.vue';
 import PlatformContent from './content/Content.vue';
 import PlatformHeader from './header/Header.vue';
-// import eleSelect from 'eleUI/select/index';
+// import eleSelect from 'myEleUI/select/index';
 // Vue.use(eleSelect);
 import {
   Select,
