@@ -5,7 +5,7 @@
       <div class="pull-left form-inline">
         <div class="form-group">
           <el-select v-model="customerSelected" placeholder="客户">
-            <el-option v-for="(item, index) in customerArr" :key="index" :label="item.fullName" :value="item.id">
+            <el-option v-for="(item, index) in customerList" :key="index" :label="item.fullName" :value="item.id">
             </el-option>
           </el-select>
         </div>
@@ -15,15 +15,22 @@
             </el-option>
           </el-select>
         </div>
-        <!--<div class="form-group">
-          <date-range-picker range-date="range.date" max="range.limit.max" min="range.limit.min" on-change="range.rangeChange()"></date-range-picker>
-        </div>-->
+        <div class="form-group">
+          <el-date-picker
+            v-model="dateRange"
+            type="daterange"
+            align="right"
+            placeholder="选择日期范围"
+            @change="dateRangeChange"
+            :picker-options="pickerOptionsRecent">
+          </el-date-picker>
+        </div>
       </div>
       <div class="pull-right">
         <div class="search-form input-group pull-left mr15">
           <input type="text" class="form-control" v-model.trim="orderQuery" placeholder="请输入工单编号">
           <span class="input-group-btn">
-            <button type="button" @click="paginationQuery" class="btn btn-default only-ico">
+            <button type="button" @click="paginationQuery('reset')" class="btn btn-default only-ico">
               <i class="fa fa-search"></i>
             </button>
           </span>
@@ -31,26 +38,17 @@
       </div>
     </div>
     <Order-table :orderList="orderList"></Order-table>
-    <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="currentPage4"
-      :page-sizes="[100, 200, 300, 400]"
-      :page-size="100"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="400">
-    </el-pagination>
-    <!--<nav class="pagination-nav">
-      <ul class="pagination pagination-outline pull-right" uib-pagination total-items="paginiationData.totalItems" items-per-page="itemsPerPage.number"
-        ng-model="paginiationData.currentPage" ng-change="pageChanged()">
-        </ul>
-        <label class="pagination-info pull-right">共paginiationData.totalItems条，每页显示
-      <select class="form-control"
-              ng-options="item as item for item in paginiationData.itemsPerPageSelection"
-              ng-model="itemsPerPage.number"
-              ng-change="itemsPerPageChanged()"></select>
-      条</label>
-    </nav>-->
+    <nav class="pagination-nav">
+      <el-pagination
+        @size-change="handlePageSizeChange"
+        @current-change="handleCurrentPageChange"
+        :current-page="currentPage"
+        :page-sizes="[10, 20, 50, 100]"
+        :page-size="itemsPerPage"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="count">
+      </el-pagination>
+    </nav>
   </div>
   </div>
 </template>
@@ -59,14 +57,15 @@
 <script>
   import Vue from 'vue';
   import {
-    mapGetters
+    mapGetters,
+    mapActions,
   } from 'vuex';
   import OrderTable from './OrderTable.vue';
+  import dateUtil from 'element-ui/src/utils/date';
 
   export default {
     data() {
       return {
-        customerArr: [],
         customerSelected: '',
         orderStatus: [{
           name: '全部状态',
@@ -87,6 +86,35 @@
         itemsPerPage: 10,
         orderList: [],
         count: 0,
+        dateRange: undefined,
+        dateRangeUnix: [undefined, undefined],
+        pickerOptionsRecent: {
+          shortcuts: [{
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            }
+          }]
+        },
       };
     },
     watch: {
@@ -98,12 +126,38 @@
       }
     },
     methods: {
-      paginationQuery() {
+      ...mapActions(['getCustomer']),
+      dateRangeChange(range) {
+        const rangeArr = range.split(' - ');
+        this.dateRangeUnix = rangeArr.map(dateStr => {
+          return dateUtil.parse(dateStr, 'yyyy-mm-dd').valueOf();
+        });
+        this.paginationQuery();
+      },
+      handlePageSizeChange(pageSize) {
+        this.itemsPerPage = pageSize;
+        this.paginationQuery();
+      },
+      handleCurrentPageChange(currentPage) {
+        this.currentPage = currentPage;
+        this.paginationQuery();
+      },
+      paginationQuery(reset) {
+        if(reset === 'reset'){
+          this.currentPage = 1;
+          this.itemsPerPage = 10;
+        };
+        var createdatebegin;
+        var createdateend;
+        if(_.first(this.dateRangeUnix)){
+          createdatebegin = _.first(this.dateRangeUnix);
+          createdateend = _.last(this.dateRangeUnix);
+        }
         const params = {
           type: 1,
           enterpriseid: this.customerSelected,
-          createdatebegin: undefined,
-          createdateend: undefined,
+          createdatebegin,
+          createdateend,
           /*templatecode: '',*/
           ticketcode: this.orderQuery,
           // servicesid: scope.facilitatorSelected.id == '-1' ? undefined : scope.facilitatorSelected.id,
@@ -122,20 +176,11 @@
       }
     },
     computed: {
-      ...mapGetters(['cmsApi'])
+      ...mapGetters(['cmsApi', 'customerList'])
     },
     mounted() {
       this.paginationQuery();
-      this.cmsApi.templateAndSite.getAllCustomer({ type: 2 }).then(res => {
-        if (!res.ok) {
-          return
-        }
-        return res.json();
-      }).then(data => {
-        console.log(data);
-        data.unshift({ fullName: '全部客户', id: undefined });
-        this.customerArr = data;
-      });
+      this.getCustomer();
     },
     components: {
       OrderTable

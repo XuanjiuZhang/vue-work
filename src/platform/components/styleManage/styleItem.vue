@@ -50,6 +50,9 @@
   import {
     mapGetters
   } from 'vuex';
+  import {
+    Message
+  } from 'element-ui';
 
   export default {
     props: ['styleData'],
@@ -83,6 +86,11 @@
         window.open(url);
       },
       updateData() {
+        Message({
+          message: '操作成功！',
+          duration: 2000,
+          type: 'success'
+        });
         this.cmsApi.style.getSingleStyle({styleid: this.styleData.id}).then(res => {
           if(!res.ok){
             return
